@@ -17,6 +17,6 @@ jobs:
       uses: robin-aws/configure-aws-credentials@cognito
       with:
         cognito-identity-pool-id: us-west-2:cc186341-855a-42de-b82b-73e91665faf0
-        aws-region: us-west-2
+        aws-region: us-east-1
     - name: Build with Maven
       run: mvn -B verify --file pom.xml
