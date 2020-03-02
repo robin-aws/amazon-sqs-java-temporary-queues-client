@@ -1,0 +1,22 @@
+name: Java CI
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up JDK 1.8
+      uses: actions/setup-java@v1
+      with:
+        java-version: 1.8
+    - name: Configure AWS credentials
+      uses: robin-aws/configure-aws-credentials@cognito
+      with:
+        cognito-identity-pool-id: us-west-2:cc186341-855a-42de-b82b-73e91665faf0
+        aws-region: us-east-1
+    - name: Build with Maven
+      run: mvn -B verify --file pom.xml
