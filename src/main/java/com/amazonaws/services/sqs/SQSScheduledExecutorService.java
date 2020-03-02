@@ -62,11 +62,11 @@ public class SQSScheduledExecutorService extends SQSExecutorService implements S
             this.period = unit.toNanos(period);
 
             messageContent.setMessageAttributesEntry(DELAY_NANOS_ATTRIBUTE_NAME, 
-                    longMessageAttributeValue(delay));
+                    longMessageAttributeValue(this.delay));
             messageContent.setMessageAttributesEntry(PERIOD_NANOS_ATTRIBUTE_NAME, 
-                    longMessageAttributeValue(period));
+                    longMessageAttributeValue(this.period));
 
-            this.time = getTime(delay);
+            this.time = getTime(this.delay);
         }
 
         public ScheduledSQSFutureTask(Message message) {
